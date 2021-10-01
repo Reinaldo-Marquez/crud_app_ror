@@ -11,7 +11,7 @@ module Api
         champions = Champion.order('name')
         render json: {
           status: 'Success',
-          message: 'All champions',
+          message: 'Showing all champions',
           data: champions
         }, status: :ok
       end
@@ -34,7 +34,6 @@ module Api
       end
 
       def update
-        debugger
         if @champion.update(champions_params)
           render_json('Success', 'Champion updated success', @champion, :ok)
         else
