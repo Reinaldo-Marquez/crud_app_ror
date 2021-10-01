@@ -9,27 +9,19 @@ module Api
 
       def index
         champions = Champion.order('name')
-        render json: {
-          status: 'Success',
-          message: 'Showing all champions',
-          data: champions
-        }, status: :ok
+        render_json('Success', 'Showing all champions', champions, :ok)
       end
 
       def show
-        render json: {
-          status: 'Success',
-          message: 'Show champion',
-          data: @champion
-        }, status: :ok
+        render_json('Success', 'Showing champion', @champion, :ok)
       end
 
       def create
         champion = Champion.new(champions_params)
         if champion.save
-          render_json('Success', 'Champion saved success', @champion, :created)
+          render_json('Success', 'Champion saved success', champion, :created)
         else
-          render_json('Failed', 'Champion not saved', @champion.errors.full_messages, :unprocessable_entity)
+          render_json('Failed', 'Champion not saved', champion.errors.full_messages, :unprocessable_entity)
         end
       end
 
