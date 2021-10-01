@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Champion < ApplicationRecord
   validates :name, presence: true
   validates :region, presence: true
